@@ -5,7 +5,7 @@ function parseAndValidate(input) {
       .filter(element => element !== '')
       .map(element => parseInt(element.trim()));
 
-   if (parsed.some(element => isNaN(element)) || parsed.length === 0) {
+   if (parsed.some(element => isNaN(element)) || parsed.length < 2) {
       return false;
    }
    return parsed;
@@ -71,7 +71,7 @@ function check() {
    input.value = '';
 
    if (!inputArray) {
-      outputResultText.textContent = 'Wrong input! Must contain numbers.';
+      outputResultText.textContent = 'Wrong input! Too short or contains NOT a numbers.';
       return;
    }
 
