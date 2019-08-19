@@ -1,0 +1,23 @@
+{
+  "name": "reach_end_of_array",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jokubka/reach_las_element_of_array.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jokubka/reach_las_element_of_array/issues"
+  },
+  "homepage": "https://github.com/jokubka/reach_las_element_of_array#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

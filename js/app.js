@@ -87,6 +87,11 @@ function check() {
    }
 }
 
-const checkButton = document.querySelector('.input-block__button');
+// Needed to avoid error in JEST.
+document.addEventListener('DOMContentLoaded', () => {
+   const checkButton = document.querySelector('.input-block__button');
+   checkButton.addEventListener('click', check);
+});
 
-checkButton.addEventListener('click', check);
+// Exporting for testing in Jest.
+module.exports = calculatePath;
