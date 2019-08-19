@@ -1,3 +1,4 @@
+// Parsing input query and checking for non number inputs in array.
 function parseAndValidate(input) {
    const parsed = input
       .split(',')
@@ -9,20 +10,25 @@ function parseAndValidate(input) {
    }
    return parsed;
 }
-
+// Finding optimal path to reach end of given array.
 function calculatePath(inputArray) {
    let pathArray = [];
    const minJumpsArray = [0];
 
+   // Making another same length array to track minimum jumps needed
+   // to reach every element of inputArray.
    for (let i = 0; i < inputArray.length - 1; i++) {
       minJumpsArray.push(Infinity);
    }
-
+   // Calculating minimum jumps needed for each element ant storing
+   // in minJumpsArray
    for (let i = 1; i < inputArray.length; i++) {
       for (let j = 0; j < i; j++) {
          if (i <= j + inputArray[j]) {
             minJumpsArray[i] = Math.min(minJumpsArray[i], minJumpsArray[j] + 1);
 
+            // Tracking when sequence of minimum jumps are changing
+            // and making  optimal path array accordingly.
             if (minJumpsArray[i] > minJumpsArray[i - 1]) {
                const lastInPathArray = pathArray[pathArray.length - 1];
 
@@ -37,6 +43,7 @@ function calculatePath(inputArray) {
          }
       }
    }
+   // Checking if the end of array was reached.
    if (minJumpsArray[minJumpsArray.length - 1] !== Infinity) {
       pathArray = pathArray.map(i => `${inputArray[i]} &#8658; `).join('');
       pathArray += inputArray[inputArray.length - 1];
@@ -44,9 +51,6 @@ function calculatePath(inputArray) {
       return false;
    }
 
-   console.log(inputArray);
-   console.log(minJumpsArray);
-   console.log(pathArray);
    return pathArray;
 }
 
@@ -57,6 +61,7 @@ function check() {
    const outputPath = document.querySelector('.output-block__path-text');
    let inputArray = [];
 
+   // Reseting all input and output DOM elements.
    outputArrayText.textContent = '';
    outputResultText.textContent = '';
    outputPath.textContent = '';
